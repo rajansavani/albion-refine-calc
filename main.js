@@ -6,6 +6,7 @@ const material_type = "ore"; // what type of material are you refining (ore, woo
 const buy_city = "Martlock"; // where you are sourcing the resources from
 const sell_city = "Thetford"; // where you are selling the refined product
 const return_rate = 0.367 // possible values include 0.152 / 0.435 in cities without bonus and 0.367 / 0.542 in cities with bonus
+const using_focus = false;
 const sell_tax = 0.065 // with premium, 4% tax plus 2.5% setup fee
 const buy_fee = 0.025 // 2.5% setup fee
 const quantity = 100; // how many of final product do we want to craft
@@ -16,5 +17,33 @@ const t5_mastery = 100;
 const t6_mastery = 18;
 const t7_mastery = 1;
 const t8_mastery = 1;
+const lowest_tier = 2; // the lowest tier refined resource we are going to buy
+const highest_tier = 5; // the tier we are trying to refine up to
+const quality = 1; // what rarity are we buying (ex. 4.1, 5.0, 6.3 etc)
+/* this is optional, but it can be useful to record max load in order to determine how many resources you can carry in a single trip */
+const max_load = 3460; // in kg, not including any buffs from food
+const pie = true; // if true, means you are using pork pie to increase load
+const go_over = true; // if true, means you are willing to go up to 130% weight
 
-/* this is all the information we need, now we can call the appropriate functions using this data */
+/* this is all the information we need, now we can call the API to get current prices */
+
+const http = require('https');
+
+let req = http.get("https://www.albion-online-data.com/api/v2/stats/prices/T2_METALBAR,T3_ORE,T4_ORE,T5_ORE.json?locations=" + buy_city + "," + sell_city + "&qualities=" + quality, function(res) {
+	let data = '',
+		json_data;
+
+	res.on('data', function(stream) {
+		data += stream;
+	});
+	res.on('end', function() {
+		json_data = JSON.parse(data);
+
+		// will output a Javascript object
+		console.log(json_data);
+	});
+});
+
+req.on('error', function(e) {
+    console.log(e.message);
+});
