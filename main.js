@@ -2,8 +2,8 @@
  * let's start by filling in some info for the calc !
  * this is gonna be a lot but it will save a lot of time rather than calculating everything manually
  */
-const material_type = "ORE"; // what type of material are you refining (ore, wood, fiber, stone, hide)
-const refined_type = "METALBAR";
+const material_type = "HIDE"; // what type of material are you refining (ore, wood, fiber, stone, hide)
+const refined_type = "LEATHER";
 const buy_city = "Martlock"; // where you are sourcing the resources from
 const sell_city = "Lymhurst"; // where you are selling the refined product
 const return_rate = 0.367; // possible values include 0.152 / 0.435 in cities without bonus and 0.367 / 0.542 in cities with bonus
@@ -30,6 +30,10 @@ const go_over = true; // if true, means you are willing to go up to 130% weig
  *	this is all the information we need, now we can call the API to get current prices
  *	if you need updated prices, please download the albion data project client and visit the markets! it helps everyone out
  */
+
+const fetch = require('node-fetch'); // used to grab JSON from albion data project URL
+const fs = require('fs'); // used to write JSON to disk
+
 var mat_string = "T" + lowest_tier + "_" + refined_type;
 for (var i = lowest_tier + 1; i <= highest_tier; i++) {
   mat_string = mat_string + ",T" + i + "_" + material_type;
@@ -42,3 +46,19 @@ var quality_string = quality;
 
 // this is all the info we need to create a link and grab the information
 var url = "https://www.albion-online-data.com/api/v2/stats/prices/" + mat_string + "?locations=" + city_string + "&qualities=" + quality_string + "&time-scale=24";
+
+let settings = {method: "Get"};
+fetch(url, settings)
+  .then(res => res.json())
+  .then((json) => {
+    const jsonString = JSON.stringify(json);
+    fs.writeFile('./marketPrices.json', jsonString, 'utf8', function (err) {
+      if (err) {
+        console.log("An error occured while writing JSON object to file");
+        return console.log(err);
+      }
+      else {
+        console.log("JSON file has been saved");
+      }
+    })
+  });
