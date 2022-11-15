@@ -31,34 +31,42 @@ const go_over = true; // if true, means you are willing to go up to 130% weig
  *	if you need updated prices, please download the albion data project client and visit the markets! it helps everyone out
  */
 
-const fetch = require('node-fetch'); // used to grab JSON from albion data project URL
-const fs = require('fs'); // used to write JSON to disk
+const fetch = require("node-fetch"); // used to grab JSON from albion data project URL
+const fs = require("fs"); // used to write JSON to disk
 
 var mat_string = "T" + lowest_tier + "_" + refined_type;
 for (var i = lowest_tier + 1; i <= highest_tier; i++) {
   mat_string = mat_string + ",T" + i + "_" + material_type;
 }
-// outputs T2_METALBAR,T3_ORE,T4_ORE,T5_ORE,T5_METALBAR
-mat_string = mat_string + ",T" + highest_tier + "_" + refined_type; 
-// other inputs we need are the cities and qualities
+/* outputs T2_METALBAR,T3_ORE,T4_ORE,T5_ORE,T5_METALBAR */
+mat_string = mat_string + ",T" + highest_tier + "_" + refined_type;
+/* other inputs we need are the cities and qualities */
 var city_string = buy_city + "," + sell_city;
 var quality_string = quality;
 
-// this is all the info we need to create a link and grab the information
-var url = "https://www.albion-online-data.com/api/v2/stats/prices/" + mat_string + "?locations=" + city_string + "&qualities=" + quality_string + "&time-scale=24";
+/* this is all the info we need to create a link and grab the information */
+var url =
+  "https://www.albion-online-data.com/api/v2/stats/prices/" +
+  mat_string +
+  "?locations=" +
+  city_string +
+  "&qualities=" +
+  quality_string +
+  "&time-scale=24";
 
-let settings = {method: "Get"};
+/* grab data as JSON from url */
+let settings = { method: "Get" };
 fetch(url, settings)
-  .then(res => res.json())
+  .then((res) => res.json())
   .then((json) => {
     const jsonString = JSON.stringify(json);
-    fs.writeFile('./marketPrices.json', jsonString, 'utf8', function (err) {
+    /* write JSON to file */
+    fs.writeFile("./marketPrices.json", jsonString, "utf8", function (err) {
       if (err) {
         console.log("An error occured while writing JSON object to file");
         return console.log(err);
-      }
-      else {
+      } else {
         console.log("JSON file has been saved");
       }
-    })
+    });
   });
