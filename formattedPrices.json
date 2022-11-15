@@ -1,0 +1,12 @@
+{
+  "T2_LEATHER_Lymhurst": [{ "sell": 42, "buy": 1, "quality": 1 }],
+  "T2_LEATHER_Martlock": [{ "sell": 46, "buy": 44, "quality": 1 }],
+  "T3_HIDE_Lymhurst": [{ "sell": 55, "buy": 53, "quality": 1 }],
+  "T3_HIDE_Martlock": [{ "sell": 65, "buy": 61, "quality": 1 }],
+  "T4_HIDE_Lymhurst": [{ "sell": 55, "buy": 46, "quality": 1 }],
+  "T4_HIDE_Martlock": [{ "sell": 62, "buy": 51, "quality": 1 }],
+  "T5_HIDE_Lymhurst": [{ "sell": 296, "buy": 295, "quality": 1 }],
+  "T5_HIDE_Martlock": [{ "sell": 344, "buy": 317, "quality": 1 }],
+  "T5_LEATHER_Lymhurst": [{ "sell": 847, "buy": 812, "quality": 1 }],
+  "T5_LEATHER_Martlock": [{ "sell": 790, "buy": 799, "quality": 1 }]
+}

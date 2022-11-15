@@ -7,10 +7,10 @@
     "sell_price_min_date": "2022-11-15T15:45:00",
     "sell_price_max": 48,
     "sell_price_max_date": "2022-11-15T15:45:00",
-    "buy_price_min": 0,
-    "buy_price_min_date": "0001-01-01T00:00:00",
-    "buy_price_max": 0,
-    "buy_price_max_date": "0001-01-01T00:00:00"
+    "buy_price_min": 1,
+    "buy_price_min_date": "2022-11-15T18:00:00",
+    "buy_price_max": 1,
+    "buy_price_max_date": "2022-11-15T18:00:00"
   },
   {
     "item_id": "T2_LEATHER",
@@ -29,14 +29,14 @@
     "item_id": "T3_HIDE",
     "city": "Lymhurst",
     "quality": 1,
-    "sell_price_min": 58,
-    "sell_price_min_date": "2022-11-15T16:50:00",
-    "sell_price_max": 58,
-    "sell_price_max_date": "2022-11-15T16:50:00",
-    "buy_price_min": 2,
-    "buy_price_min_date": "2022-11-15T16:45:00",
-    "buy_price_max": 50,
-    "buy_price_max_date": "2022-11-15T16:45:00"
+    "sell_price_min": 55,
+    "sell_price_min_date": "2022-11-15T18:00:00",
+    "sell_price_max": 59,
+    "sell_price_max_date": "2022-11-15T18:00:00",
+    "buy_price_min": 1,
+    "buy_price_min_date": "2022-11-15T18:00:00",
+    "buy_price_max": 53,
+    "buy_price_max_date": "2022-11-15T18:00:00"
   },
   {
     "item_id": "T3_HIDE",
