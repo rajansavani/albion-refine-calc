@@ -10,7 +10,7 @@ const return_rate = 0.367; // possible values include 0.152 / 0.435 in cities wi
 const using_focus = false;
 const sell_tax = 0.065; // with premium, 4% tax plus 2.5% setup fee
 const buy_fee = 0.025; // 2.5% setup fee
-const quantity = 100; // how many of final product do we want to craft
+const quantity = 1000; // how many of final product do we want to craft
 const usage_fee = 200; // usage fee of the crafting place
 /* input the mastery levels for each tier, will incorporate into calculation for focus refining */
 const t4_mastery = 100;
@@ -26,6 +26,30 @@ const max_load = 3460; // in kg, not including any buffs from food
 const pie = true; // if true, means you are using pork pie to increase load
 const go_over = true; // if true, means you are willing to go up to 130% weig
 
+module.exports = {
+  material_type,
+  refined_type,
+  buy_city,
+  sell_city,
+  return_rate,
+  using_focus,
+  sell_tax,
+  buy_fee,
+  quantity,
+  usage_fee,
+  t4_mastery,
+  t5_mastery,
+  t6_mastery,
+  t7_mastery,
+  t8_mastery,
+  lowest_tier,
+  highest_tier,
+  quality,
+  max_load,
+  pie,
+  go_over,
+};
+
 /*
  *	this is all the information we need, now we can call the API to get current prices
  *	if you need updated prices, please download the albion data project client and visit the markets! it helps everyone out
@@ -33,6 +57,7 @@ const go_over = true; // if true, means you are willing to go up to 130% weig
 
 const fetch = require("node-fetch"); // used to grab JSON from albion data project URL
 const fs = require("fs"); // used to write JSON to disk
+const { pid } = require("process");
 
 var mat_string = "T" + lowest_tier + "_" + refined_type;
 for (var i = lowest_tier + 1; i <= highest_tier; i++) {
