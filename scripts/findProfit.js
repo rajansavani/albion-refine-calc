@@ -16,9 +16,15 @@ var matstring = "T1_" + mat_type + ",T1_" + ref_type;
 for (let i = 2; i <= 8; i++) {
     matstring = matstring + ",T" + i + "_" + mat_type;
     matstring = matstring + ",T" + i + "_" + ref_type;
+    if (i >= 4) {
+        for (let j = 1; j <= 3; j++) {
+          matstring = matstring + ",T" + i + "_" + mat_type + "_LEVEL" + j + "@" + j;
+          matstring = matstring + ",T" + i + "_" + ref_type + "_LEVEL" + j + "@" + j;
+        }
+    }
 }
-var cities = "Bridgewatch,Martlock,FortSterling,Lymhurst,Thetford";
-var qualities = "1,2,3,4"
+var cities = "FortSterling"; //Bridgewatch,Martlock,FortSterling,Lymhurst,Thetford
+var qualities = "0";
 
 var url =
   "https://www.albion-online-data.com/api/v2/stats/prices/" +
@@ -27,7 +33,7 @@ var url =
   cities +
   "&qualities=" +
   qualities +
-  "&time-scale=24";
+  "&time-scale=6";
 
   let settings = { method: "Get" };
   fetch(url, settings)
@@ -44,3 +50,16 @@ var url =
         }
       });
     });
+
+const prices = require("./allPricesForType.json");
+original.forEach((item) => {
+  /* reduces each entry in array to just the sell price, buy price, and quality with city and item type acting as a key */
+  let primary_key = item.item_id + "_" + item.city;
+  let data = {
+    sell: item.sell_price_min,
+    buy: item.buy_price_max,
+    quality: item.quality,
+  };
+  formatted[primary_key] = [];
+  formatted[primary_key].push(data);
+});

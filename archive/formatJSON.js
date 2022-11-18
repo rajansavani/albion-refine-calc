@@ -2,7 +2,7 @@
  * this script will take the .JSON file created from main.js and reformat it to make accessing data easier
  */
 
-const original = require("./marketPrices.json");
+const original = require("./allPricesForType.json");
 var formatted = {}; // empty JSON object that will be used to store formatted data
 const fs = require("fs"); // used to write JSON to disk
 
