@@ -86,7 +86,7 @@ fetch(url, settings)
   .then((json) => {
     const jsonString = JSON.stringify(json);
     /* write JSON to file */
-    fs.writeFile("./marketPrices.json", jsonString, "utf8", function (err) {
+    fs.writeFile("./scripts/marketPrices.json", jsonString, "utf8", function (err) {
       if (err) {
         console.log("An error occured while writing JSON object to file");
         return console.log(err);

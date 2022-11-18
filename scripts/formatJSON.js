@@ -2,7 +2,7 @@
  * this script will take the .JSON file created from main.js and reformat it to make accessing data easier
  */
 
-const original = require("./marketPrices.json");
+const original = require("./scripts/marketPrices.json");
 var formatted = {}; // empty JSON object that will be used to store formatted data
 const fs = require("fs"); // used to write JSON to disk
 
@@ -20,7 +20,7 @@ original.forEach((item) => {
 
 const jsonString = JSON.stringify(formatted);
 /* write JSON to file */
-fs.writeFile("./formattedPrices.json", jsonString, "utf8", function (err) {
+fs.writeFile("./scripts/formattedPrices.json", jsonString, "utf8", function (err) {
   if (err) {
     console.log("An error occured while writing JSON object to file");
     return console.log(err);
