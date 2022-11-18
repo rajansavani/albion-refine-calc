@@ -4,7 +4,6 @@
  */
 
 const main = require("./main.js"); // import necessary variables defined in main.js
-const format = require("./formatJSON.js"); // formats the JSON after running main.js
 const prices = require("./formattedPrices.JSON");
 
 /* find out the number of resources from each tier are needed to craft the desired amount of refined product */
