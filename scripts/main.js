@@ -4,8 +4,8 @@
  */
 const material_type = "HIDE"; // what type of material are you refining (ore, wood, fiber, stone, hide)
 const refined_type = "LEATHER";
-const buy_city = "Martlock"; // where you are sourcing the resources from
-const sell_city = "Lymhurst"; // where you are selling the refined product
+const buy_city = "FortSterling"; // where you are sourcing the resources from
+const sell_city = "Martlock"; // where you are selling the refined product
 const return_rate = 0.367; // possible values include 0.152 / 0.435 in cities without bonus and 0.367 / 0.542 in cities with bonus
 const using_focus = false;
 const sell_tax = 0.065; // with premium, 4% tax plus 2.5% setup fee
