@@ -21,7 +21,7 @@ function createURL() {
     matstring = matstring + ",T" + i + "_" + ref_type;
     if (i >= 4) {
       // adds the different rarities of materials to the query, materials of t3 or lower do not have rarities
-      for (let j = 1; j <= 3; j++) {
+      for (let j = 1; j <= 4; j++) {
         matstring =
           matstring + ",T" + i + "_" + mat_type + "_LEVEL" + j + "@" + j;
         matstring =
